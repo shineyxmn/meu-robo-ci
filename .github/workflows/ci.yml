@@ -2,13 +2,16 @@ name: CI - Qualidade e Segurança
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
   qualidade-seguranca:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout do código
         uses: actions/checkout@v4
@@ -46,4 +49,3 @@ jobs:
 
       - name: Mensagem final
         run: echo "✅ CI finalizado com sucesso!"
-
