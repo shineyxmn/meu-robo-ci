@@ -1,39 +1,56 @@
-package robocode;
-
+package PacoteRobo;
 import robocode.*;
-import java.awt.Color;
+//import java.awt.Color;
+
+// API help : https://robocode.sourceforge.io/docs/robocode/robocode/Robot.html
 
 /**
- * Um robô simples de exemplo para testes do pipeline.
+ * Optimus - a robot by (your name here)
  */
-public class PrimeiroRobo extends Robot {
+public class PrimeiroRobo extends Robot
+{
+	/**
+	 * run: Optimus's default behavior
+	 */
+	public void run() {
+		// Initialization of the robot should be put here
 
-    @Override
-    public void run() {
-        // Configura cores
-        setBodyColor(Color.GREEN);
-        setGunColor(Color.BLACK);
-        setRadarColor(Color.GRAY);
+		// After trying out your robot, try uncommenting the import at the top,
+		// and the next line:
 
-        // Loop principal do robô
-        while (true) {
-            ahead(100);    // anda pra frente
-            turnGunRight(360); // gira o canhão
-            back(100);     // anda pra trás
-            turnGunRight(360);
-        }
-    }
+		// setColors(Color.red,Color.blue,Color.green); // body,gun,radar
 
-    @Override
-    public void onScannedRobot(ScannedRobotEvent e) {
-        // Atira quando vê outro robô
-        fire(1);
-    }
+		// Robot main loop
+		while(true) {
+			// Replace the next 4 lines with any behavior you would like
+			ahead(100);
+			turnGunRight(360);
+			back(100);
+			turnGunRight(360);
+		}
+	}
 
-    @Override
-    public void onHitByBullet(HitByBulletEvent e) {
-        // Gira pra tentar escapar
-        turnRight(90 - e.getBearing());
-    }
+	/**
+	 * onScannedRobot: What to do when you see another robot
+	 */
+	public void onScannedRobot(ScannedRobotEvent e) {
+		// Replace the next line with any behavior you would like
+		fire(1);
+	}
+
+	/**
+	 * onHitByBullet: What to do when you're hit by a bullet
+	 */
+	public void onHitByBullet(HitByBulletEvent e) {
+		// Replace the next line with any behavior you would like
+		back(10);
+	}
+	
+	/**
+	 * onHitWall: What to do when you hit a wall
+	 */
+	public void onHitWall(HitWallEvent e) {
+		// Replace the next line with any behavior you would like
+		back(20);
+	}	
 }
-
